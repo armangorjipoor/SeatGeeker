@@ -20,10 +20,13 @@ struct Meta: Codable {
     let per_page: Int
 }
 struct Event: Codable {
-    let type: String //NameEnum
+    let type: String 
     let id: Int
+    let datetime_utc: String
     let venue: Venue
     let performers: [Performer]
+    
+    
 }
 struct Venue: Codable {
     let state: String

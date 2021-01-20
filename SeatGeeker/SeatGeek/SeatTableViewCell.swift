@@ -12,6 +12,8 @@ class SeatTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var cityLbl:  UILabel!
+    @IBOutlet weak var dateLbl:  UILabel!
     @IBOutlet weak var seatImgView: UIImageView!
     
     override func awakeFromNib() {

@@ -39,4 +39,8 @@ class ViewModel: NSObject {
         }.resume()
     }
     
+    func createTitle(event: Event) -> String{
+        event.type + " at " + event.venue.city
+    }
+    
 }

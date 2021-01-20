@@ -32,14 +32,16 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
 }
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return event.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SeatTableViewCell
-        cell.titleLbl.text = event[indexPath.row].type
+        cell.titleLbl.text = eventViewModel.createTitle(event: event[indexPath.row])
+        cell.cityLbl.text = event[indexPath.row].venue.city
+        cell.dateLbl.text = event[indexPath.row].datetime_utc
         cell.seatImgView.downloaded(from: event[indexPath.row].performers.first!.image)
         return cell
     }
