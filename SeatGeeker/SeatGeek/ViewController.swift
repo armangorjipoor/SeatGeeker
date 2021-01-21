@@ -25,6 +25,12 @@ class ViewController: UIViewController {
         getEvents()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let olsStr = "Arman Gorjipoor ios Developer"
+        let newStr = olsStr.withReplacedCharacters(" ", by: "+")
+        print("Looo: \(newStr)")
+    }
     func getEvents() {
         
         eventViewModel.getData { welocom in
@@ -64,7 +70,7 @@ extension ViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("m;lm;lm")
 
-        eventViewModel.url = URL(string: "https://api.seatgeek.com/2/events?client_id=MjE1MDk2MTF8MTYxMTA4NTA5Ny40NDQ2NDM3&per_page=50")!
+        eventViewModel.query = searchText
         eventViewModel.getData { welocom in
                    self.event = welocom.events
                    DispatchQueue.main.async {
@@ -74,7 +80,6 @@ extension ViewController: UISearchResultsUpdating, UISearchBarDelegate {
                    }
             print("Log: \(self.event.count)")
                }
-        print("Log: \(event.count)")
         tableView.reloadData()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

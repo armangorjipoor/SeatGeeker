@@ -10,21 +10,24 @@ import Foundation
 
 class ViewModel: NSObject {
     
-    var eventsItem = [Event]()
     private var apiService: APIServices!
-//    private(set) var empData: Welcome! {
-//        didSet {
-//            self.bindViewModelToController()
-//        }
-//    }
-     var url = URL(string: "https://api.seatgeek.com/2/events?client_id=MjE1MDk2MTF8MTYxMTA4NTA5Ny40NDQ2NDM3&per_page=10")!
+    var eventsItem = [Event]()
+    var query: String! {
+        didSet {
+            if query.count != 0 {
+               let replacedQuery =  query.withReplacedCharacters(" ", by: "+")
+                url = URL(string: "https://api.seatgeek.com/2/events?client_id=MjE1MDk2MTF8MTYxMTA4NTA5Ny40NDQ2NDM3&q=\(replacedQuery)&per_page=10")!
+                
+            }
+        }
+    }
+    lazy var url = URL(string: "https://api.seatgeek.com/2/events?client_id=MjE1MDk2MTF8MTYxMTA4NTA5Ny40NDQ2NDM3&per_page=10")!
     
    // var bindViewModelToController: (() -> ()) = { }
     
     override init() {
         super.init()
-       // self.apiService = APIServices()
-       
+        
     }
     
     
