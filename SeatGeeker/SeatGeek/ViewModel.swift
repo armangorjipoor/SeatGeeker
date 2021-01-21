@@ -16,12 +16,12 @@ class ViewModel: NSObject {
         didSet {
             if query.count != 0 {
                let replacedQuery =  query.withReplacedCharacters(" ", by: "+")
-                url = URL(string: "https://api.seatgeek.com/2/events?client_id=MjE1MDk2MTF8MTYxMTA4NTA5Ny40NDQ2NDM3&q=\(replacedQuery)&per_page=10")!
+                url = URL(string: "https://api.seatgeek.com/2/events?client_id=MjE1MDk2MTF8MTYxMTA4NTA5Ny40NDQ2NDM3&q=\(replacedQuery)&per_page=25")!
                 
             }
         }
     }
-    lazy var url = URL(string: "https://api.seatgeek.com/2/events?client_id=MjE1MDk2MTF8MTYxMTA4NTA5Ny40NDQ2NDM3&per_page=10")!
+    lazy var url = URL(string: "https://api.seatgeek.com/2/events?client_id=MjE1MDk2MTF8MTYxMTA4NTA5Ny40NDQ2NDM3&per_page=25")!
     
    // var bindViewModelToController: (() -> ()) = { }
     

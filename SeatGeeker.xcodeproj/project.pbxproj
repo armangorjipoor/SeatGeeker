@@ -15,6 +15,7 @@
 		225D3A0825B765F6003E31C1 /* SeatGeeker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 225D3A0625B765F6003E31C1 /* SeatGeeker.xcdatamodeld */; };
 		225D3A0A25B765F7003E31C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225D3A0925B765F7003E31C1 /* Assets.xcassets */; };
 		225D3A0D25B765F7003E31C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225D3A0B25B765F7003E31C1 /* LaunchScreen.storyboard */; };
+		2263805625BA06E900CD739B /* SeatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263805525BA06E900CD739B /* SeatDetailViewController.swift */; };
 		2287A91A25B803750069ABD6 /* Mo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287A91925B803750069ABD6 /* Mo.swift */; };
 		2287A91C25B80C480069ABD6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287A91B25B80C480069ABD6 /* Model.swift */; };
 		2288FDE425B847B800D66AD3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288FDE325B847B800D66AD3 /* ViewModel.swift */; };
@@ -33,6 +34,7 @@
 		225D3A0925B765F7003E31C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225D3A0C25B765F7003E31C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225D3A0E25B765F7003E31C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2263805525BA06E900CD739B /* SeatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatDetailViewController.swift; sourceTree = "<group>"; };
 		2287A91925B803750069ABD6 /* Mo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mo.swift; sourceTree = "<group>"; };
 		2287A91B25B80C480069ABD6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		2288FDE325B847B800D66AD3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 			path = SeatGeeker;
 			sourceTree = "<group>";
 		};
+		2263805725BA06F500CD739B /* SeatDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2263805525BA06E900CD739B /* SeatDetailViewController.swift */,
+			);
+			path = SeatDetail;
+			sourceTree = "<group>";
+		};
 		2287A91425B7F8C10069ABD6 /* SeatGeek */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +98,7 @@
 				2288FDE325B847B800D66AD3 /* ViewModel.swift */,
 				2288FDE525B8492F00D66AD3 /* APIServices.swift */,
 				225D3A0125B765F6003E31C1 /* ViewController.swift */,
+				2263805725BA06F500CD739B /* SeatDetail */,
 				22D777EE25B8BA86003DFA0E /* SeatTableViewCell.swift */,
 			);
 			path = SeatGeek;
@@ -189,6 +200,7 @@
 				2288FDE625B8492F00D66AD3 /* APIServices.swift in Sources */,
 				225D39FE25B765F6003E31C1 /* AppDelegate.swift in Sources */,
 				2287A91C25B80C480069ABD6 /* Model.swift in Sources */,
+				2263805625BA06E900CD739B /* SeatDetailViewController.swift in Sources */,
 				225D3A0025B765F6003E31C1 /* SceneDelegate.swift in Sources */,
 				224D6B5A25B87C2C00026987 /* Utilities.swift in Sources */,
 				225D3A0825B765F6003E31C1 /* SeatGeeker.xcdatamodeld in Sources */,

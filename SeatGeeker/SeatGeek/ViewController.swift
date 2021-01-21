@@ -20,17 +20,21 @@ class ViewController: UIViewController {
         searchController.searchBar.delegate = self
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.tintColor = .white
-        searchController.searchBar.barTintColor = .green
+        searchController.searchBar.barTintColor = .black
         eventViewModel = ViewModel()
         getEvents()
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        let olsStr = "Arman Gorjipoor ios Developer"
-        let newStr = olsStr.withReplacedCharacters(" ", by: "+")
-        print("Looo: \(newStr)")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailViewController" {
+            if let index = sender as? IndexPath {
+            let seatDetail = segue.destination as! SeatDetailViewController
+                seatDetail.event = event[index.row]
+            }
+        }
     }
+    
     func getEvents() {
         
         eventViewModel.getData { welocom in
@@ -40,9 +44,7 @@ class ViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        
     }
-    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -57,18 +59,24 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.cityLbl.text = event[indexPath.row].venue.city
         cell.dateLbl.text = event[indexPath.row].datetime_utc
         cell.seatImgView.downloaded(from: event[indexPath.row].performers.first!.image)
+        if event[indexPath.row].id == 5337684 {
+            cell.backgroundColor = .orange
+        }
+        print("Log: \(event[indexPath.row].id)")
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "DetailViewController", sender: indexPath)
     }
 }
 
 extension ViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("Log")
         self.event.removeAll()
         self.tableView.reloadData()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("m;lm;lm")
 
         eventViewModel.query = searchText
         eventViewModel.getData { welocom in
@@ -76,9 +84,7 @@ extension ViewController: UISearchResultsUpdating, UISearchBarDelegate {
                    DispatchQueue.main.async {
                        self.event = welocom.events
                        self.tableView.reloadData()
-                    print("Log neta \(welocom.meta.total)")
                    }
-            print("Log: \(self.event.count)")
                }
         tableView.reloadData()
     }
