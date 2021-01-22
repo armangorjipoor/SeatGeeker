@@ -13,10 +13,12 @@ class SeatFavoriteViewController: UIViewController, UITableViewDataSource, UITab
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     private var fetchedRc: NSFetchedResultsController<SeatEvent>!
     private var photoMgr = PhotoManager()
     private var dateCons = DateConversation()
-    
+    private var favoriteModel: FavoriteModel!
+    private var event: SeatEvent!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -41,7 +43,8 @@ class SeatFavoriteViewController: UIViewController, UITableViewDataSource, UITab
             if let index = sender as? IndexPath {
             let seatDetail = segue.destination as! SeatDetailViewController
             let favoriteEvent = fetchedRc.object(at: index)
-                
+                seatDetail.isFavoriteAvailable = true
+                seatDetail.favoriteModel = FavoriteModel(eventImage: photoMgr.load(image: event.imgURL!)!, eventId: Int(event.id), eventDate: event.date!, eventAddress: event.address!, eventType: event.type!)
             }
         }
         
@@ -52,7 +55,7 @@ class SeatFavoriteViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! SeatTableViewCell
-        let event = fetchedRc.object(at: indexPath)
+        event = fetchedRc.object(at: indexPath)
         cell.titleLbl.text = event.type
         cell.dateLbl.text = dateCons.getString(from: event.date!)
         cell.seatImgView.image = photoMgr.load(image: event.imgURL!)

@@ -3,10 +3,11 @@
     <entity name="SeatEvent" representedClassName=".SeatEvent" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imgURL" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="SeatEvent" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="SeatEvent" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(SeatEvent)
+
 public class SeatEvent: NSManagedObject {
 
 }

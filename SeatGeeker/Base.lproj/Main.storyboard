@@ -241,6 +241,7 @@
                                     <constraint firstAttribute="width" constant="30" id="mLH-QF-wDs"/>
                                 </constraints>
                                 <state key="normal" image="icn_FavEmpty"/>
+                                <state key="selected" image="icn_FavFill"/>
                                 <connections>
                                     <action selector="favoritBtnTapped:" destination="DDl-Gs-G46" eventType="touchUpInside" id="hdX-ww-0yP"/>
                                 </connections>

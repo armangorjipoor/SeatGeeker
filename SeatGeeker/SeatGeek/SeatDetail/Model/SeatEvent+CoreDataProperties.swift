@@ -17,9 +17,10 @@ extension SeatEvent {
         return NSFetchRequest<SeatEvent>(entityName: "SeatEvent")
     }
 
-    @NSManaged public var type: String?
-    @NSManaged public var date: Date?
     @NSManaged public var address: String?
+    @NSManaged public var date: Date?
     @NSManaged public var imgURL: String?
+    @NSManaged public var type: String?
+    @NSManaged public var id: Int32
 
 }
