@@ -10,6 +10,9 @@ import UIKit
 
 class SeatDetailViewController: UIViewController {
 
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var event: Event!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var favoritBtn: UIButton!
@@ -27,6 +30,14 @@ class SeatDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         seatImgView.layer.cornerRadius = seatImgView.bounds.height * (20/100)
+    }
+    
+    @IBAction func favoritBtnTapped(_ sender: UIButton) {
+        let favoriteEvent = SeatEvent(entity: SeatEvent.entity(), insertInto: context)
+        favoriteEvent.type = event.type
+//        favoriteEvent.date = Date
+        favoriteEvent.address = event.venue.address
+        
     }
 
 }

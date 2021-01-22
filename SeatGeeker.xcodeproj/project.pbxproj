@@ -20,6 +20,9 @@
 		2287A91C25B80C480069ABD6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287A91B25B80C480069ABD6 /* Model.swift */; };
 		2288FDE425B847B800D66AD3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288FDE325B847B800D66AD3 /* ViewModel.swift */; };
 		2288FDE625B8492F00D66AD3 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288FDE525B8492F00D66AD3 /* APIServices.swift */; };
+		22D4566D25BA9D37002CFD60 /* SeatEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4566B25BA9D37002CFD60 /* SeatEvent+CoreDataClass.swift */; };
+		22D4566E25BA9D37002CFD60 /* SeatEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4566C25BA9D37002CFD60 /* SeatEvent+CoreDataProperties.swift */; };
+		22D4566F25BAA434002CFD60 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4566A25BA9BA5002CFD60 /* PhotoManager.swift */; };
 		22D777EF25B8BA86003DFA0E /* SeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D777EE25B8BA86003DFA0E /* SeatTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +42,9 @@
 		2287A91B25B80C480069ABD6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		2288FDE325B847B800D66AD3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2288FDE525B8492F00D66AD3 /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
+		22D4566A25BA9BA5002CFD60 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		22D4566B25BA9D37002CFD60 /* SeatEvent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeatEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
+		22D4566C25BA9D37002CFD60 /* SeatEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeatEvent+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		22D777EE25B8BA86003DFA0E /* SeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				2263805525BA06E900CD739B /* SeatDetailViewController.swift */,
+				22D4567025BAA517002CFD60 /* Model */,
 			);
 			path = SeatDetail;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				224D6B5925B87C2C00026987 /* Utilities.swift */,
+				22D4566A25BA9BA5002CFD60 /* PhotoManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -121,6 +129,15 @@
 				225D3A0B25B765F7003E31C1 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22D4567025BAA517002CFD60 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				22D4566B25BA9D37002CFD60 /* SeatEvent+CoreDataClass.swift */,
+				22D4566C25BA9D37002CFD60 /* SeatEvent+CoreDataProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,11 +213,14 @@
 			files = (
 				22D777EF25B8BA86003DFA0E /* SeatTableViewCell.swift in Sources */,
 				2287A91A25B803750069ABD6 /* Mo.swift in Sources */,
+				22D4566F25BAA434002CFD60 /* PhotoManager.swift in Sources */,
 				225D3A0225B765F6003E31C1 /* ViewController.swift in Sources */,
 				2288FDE625B8492F00D66AD3 /* APIServices.swift in Sources */,
 				225D39FE25B765F6003E31C1 /* AppDelegate.swift in Sources */,
+				22D4566E25BA9D37002CFD60 /* SeatEvent+CoreDataProperties.swift in Sources */,
 				2287A91C25B80C480069ABD6 /* Model.swift in Sources */,
 				2263805625BA06E900CD739B /* SeatDetailViewController.swift in Sources */,
+				22D4566D25BA9D37002CFD60 /* SeatEvent+CoreDataClass.swift in Sources */,
 				225D3A0025B765F6003E31C1 /* SceneDelegate.swift in Sources */,
 				224D6B5A25B87C2C00026987 /* Utilities.swift in Sources */,
 				225D3A0825B765F6003E31C1 /* SeatGeeker.xcdatamodeld in Sources */,
