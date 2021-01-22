@@ -26,6 +26,7 @@
 		22D4566D25BA9D37002CFD60 /* SeatEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4566B25BA9D37002CFD60 /* SeatEvent+CoreDataClass.swift */; };
 		22D4566E25BA9D37002CFD60 /* SeatEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4566C25BA9D37002CFD60 /* SeatEvent+CoreDataProperties.swift */; };
 		22D4566F25BAA434002CFD60 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4566A25BA9BA5002CFD60 /* PhotoManager.swift */; };
+		22D697B425BAF32B006419C2 /* SeatFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D697B325BAF32B006419C2 /* SeatFavoriteViewController.swift */; };
 		22D777EF25B8BA86003DFA0E /* SeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D777EE25B8BA86003DFA0E /* SeatTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		22D4566A25BA9BA5002CFD60 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		22D4566B25BA9D37002CFD60 /* SeatEvent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeatEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22D4566C25BA9D37002CFD60 /* SeatEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeatEvent+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		22D697B325BAF32B006419C2 /* SeatFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatFavoriteViewController.swift; sourceTree = "<group>"; };
 		22D777EE25B8BA86003DFA0E /* SeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,8 +99,10 @@
 				2287A91525B7F8E00069ABD6 /* Utilities */,
 				2287A91425B7F8C10069ABD6 /* SeatGeek */,
 				225D3A0325B765F6003E31C1 /* Main.storyboard */,
+				22D697B325BAF32B006419C2 /* SeatFavoriteViewController.swift */,
 				225D3A0625B765F6003E31C1 /* SeatGeeker.xcdatamodeld */,
 				225D3A0E25B765F7003E31C1 /* Info.plist */,
+				2287A91925B803750069ABD6 /* Mo.swift */,
 			);
 			path = SeatGeeker;
 			sourceTree = "<group>";
@@ -115,7 +119,6 @@
 		2287A91425B7F8C10069ABD6 /* SeatGeek */ = {
 			isa = PBXGroup;
 			children = (
-				2287A91925B803750069ABD6 /* Mo.swift */,
 				2287A91B25B80C480069ABD6 /* Model.swift */,
 				2288FDE325B847B800D66AD3 /* ViewModel.swift */,
 				2288FDE525B8492F00D66AD3 /* APIServices.swift */,
@@ -234,6 +237,7 @@
 				225D3A0225B765F6003E31C1 /* ViewController.swift in Sources */,
 				2288FDE625B8492F00D66AD3 /* APIServices.swift in Sources */,
 				2221A11125BAC18C007987D9 /* UIImageView+Extension.swift in Sources */,
+				22D697B425BAF32B006419C2 /* SeatFavoriteViewController.swift in Sources */,
 				225D39FE25B765F6003E31C1 /* AppDelegate.swift in Sources */,
 				22D4566E25BA9D37002CFD60 /* SeatEvent+CoreDataProperties.swift in Sources */,
 				2221A11325BAC1F7007987D9 /* String+Extension.swift in Sources */,

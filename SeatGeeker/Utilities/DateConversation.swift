@@ -20,4 +20,9 @@ class DateConversation {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return dateFormatter.date(from: str)!
     }
+    
+    func getString(from date: Date) -> String {
+        dateFormatter.dateFormat = "EEEE, MMMM, dd, yyyy"
+        return dateFormatter.string(from: date)
+    }
 }

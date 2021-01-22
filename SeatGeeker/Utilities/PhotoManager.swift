@@ -14,7 +14,7 @@ class PhotoManager {
     var image = UIImage()
     let session = URLSession.shared
     var documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    var id = Int()
+//    var id = Int()
     var localmageURL: String {
         return imageFileName
     }
@@ -22,17 +22,18 @@ class PhotoManager {
     
     init() {}
     
-    private func generatePhotoName() {
-        imageFileName = "Event_Image_" + String(id) + ".png"
+    private func generatePhotoName(_ id: Int) -> String {
+        return "Event_Image_" + String(id) + ".png"
     }
     
-    func save() {
-        generatePhotoName()
+    func save(eventID: Int) -> String {
+       let imgName =  generatePhotoName(eventID)
         do {
             if let pngImageData = image.pngData() {
-                try? pngImageData.write(to: documentURL.appendingPathComponent(imageFileName) , options: .atomic)
+                try? pngImageData.write(to: documentURL.appendingPathComponent(imgName) , options: .atomic)
             }
         }
+        return imgName
     }
     
     func load(image fromPath: String) -> UIImage? {

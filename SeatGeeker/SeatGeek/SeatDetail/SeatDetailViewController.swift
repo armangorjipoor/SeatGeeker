@@ -38,15 +38,14 @@ class SeatDetailViewController: UIViewController {
     
     @IBAction func favoritBtnTapped(_ sender: UIButton) {
         let favoriteEvent = SeatEvent(entity: SeatEvent.entity(), insertInto: context)
+        let photoMgr = PhotoManager()
+        photoMgr.image = self.img!
         favoriteEvent.type = event.type
         favoriteEvent.date = dateCons.getDate(from: event.datetime_utc)
         favoriteEvent.address = event.venue.address
+        favoriteEvent.imgURL = photoMgr.save(eventID: event.id)
         appDelegate.saveContext()
-        let photoMgr = PhotoManager()
-        photoMgr.image = self.img!
-        photoMgr.save()
-        let imgurl = photoMgr.localmageURL
-        print("Log\(self.img!)")
+        
         Utilities.getDBFilePathWith(mark: "Log")
         
     }
