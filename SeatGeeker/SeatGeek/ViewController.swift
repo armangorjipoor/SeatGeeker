@@ -20,10 +20,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         indicatorView.startAnimating()
         //searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        tableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.tintColor = .white
-        searchController.searchBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+//        searchController.searchBar.delegate = self
+       // tableView.tableHeaderView = searchController.searchBar
+//        searchController.searchBar.tintColor = .white
+//        searchController.searchBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         eventViewModel = ViewModel()
         getEvents()
         
@@ -57,6 +57,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        if event.count == 0 {
 //            offlineLbl.isHidden = false
+//            indicatorView.isHidden = true
 //            self.tableView.isHidden = true
 //            self.view.backgroundColor = .gray
 //        }
@@ -97,15 +98,17 @@ extension ViewController: UISearchResultsUpdating, UISearchBarDelegate {
         tableView.reloadData()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+        
         eventViewModel.getData { welocom in
-            self.event = welocom.events
-            DispatchQueue.main.async {
-                self.event = welocom.events
-                self.indicatorView.stopAnimating()
-                self.indicatorView.isHidden = true
-                self.tableView.reloadData()
-            }
-        }
+                       self.event = welocom.events
+                       DispatchQueue.main.async {
+                           self.event = welocom.events
+                           self.tableView.reloadData()
+                       }
+                   }
+            tableView.reloadData()
 
     }
     func updateSearchResults(for searchController: UISearchController) {
