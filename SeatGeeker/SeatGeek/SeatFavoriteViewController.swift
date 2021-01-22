@@ -17,7 +17,7 @@ class SeatFavoriteViewController: UIViewController, UITableViewDataSource, UITab
     private var fetchedRc: NSFetchedResultsController<SeatEvent>!
     private var photoMgr = PhotoManager()
     private var dateCons = DateConversation()
-    private var favoriteModel: FavoriteModel!
+//    private var favoriteModel: FavoriteModel!
     private var event: SeatEvent!
     
     @IBOutlet weak var tableView: UITableView!
@@ -46,7 +46,7 @@ class SeatFavoriteViewController: UIViewController, UITableViewDataSource, UITab
                 let seatDetail = segue.destination as! SeatDetailViewController
                 let favoriteEvent = fetchedRc.object(at: index)
                 seatDetail.isFavoriteAvailable = true
-                //                seatDetail.favoriteModel = FavoriteModel(eventImage: photoMgr.load(image: event.imgURL!)!, eventId: Int(event.id), eventDate: event.date!, eventAddress: event.address!, eventType: event.type!)
+                
                 seatDetail.favoriteEvent = favoriteEvent
             }
         }

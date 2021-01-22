@@ -22,7 +22,7 @@ class SeatDetailViewController: UIViewController {
     
     // when app is Offline
     var isFavoriteAvailable: Bool = false
-    var favoriteModel: FavoriteModel!
+//    var favoriteModel: FavoriteModel!
     var favoriteEvent: SeatEvent!
     
     @IBOutlet weak var titleLbl: UILabel!

@@ -29,6 +29,7 @@
 		22D4566F25BAA434002CFD60 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4566A25BA9BA5002CFD60 /* PhotoManager.swift */; };
 		22D697B425BAF32B006419C2 /* SeatFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D697B325BAF32B006419C2 /* SeatFavoriteViewController.swift */; };
 		22D777EF25B8BA86003DFA0E /* SeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D777EE25B8BA86003DFA0E /* SeatTableViewCell.swift */; };
+		22EEF9B025BB744E00697F87 /* Demo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 22EEF9AF25BB744D00697F87 /* Demo.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		22D4566A25BA9BA5002CFD60 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		22D697B325BAF32B006419C2 /* SeatFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatFavoriteViewController.swift; sourceTree = "<group>"; };
 		22D777EE25B8BA86003DFA0E /* SeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatTableViewCell.swift; sourceTree = "<group>"; };
+		22EEF9AF25BB744D00697F87 /* Demo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Demo.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				225D3A0625B765F6003E31C1 /* SeatGeeker.xcdatamodeld */,
 				225D3A0E25B765F7003E31C1 /* Info.plist */,
 				2287A91925B803750069ABD6 /* Mo.swift */,
+				22EEF9AF25BB744D00697F87 /* Demo.mov */,
 			);
 			path = SeatGeeker;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225D3A0D25B765F7003E31C1 /* LaunchScreen.storyboard in Resources */,
+				22EEF9B025BB744E00697F87 /* Demo.mov in Resources */,
 				225D3A0A25B765F7003E31C1 /* Assets.xcassets in Resources */,
 				225D3A0525B765F6003E31C1 /* Main.storyboard in Resources */,
 			);
