@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         if segue.identifier == "DetailViewController" {
             if let index = sender as? IndexPath {
             let seatDetail = segue.destination as! SeatDetailViewController
+                let cellForImage =  tableView.cellForRow(at: index) as! SeatTableViewCell
+                seatDetail.img = cellForImage.seatImgView.image!
                 seatDetail.event = event[index.row]
             }
         }
@@ -53,7 +55,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let index = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SeatTableViewCell
         cell.titleLbl.text = eventViewModel.createTitle(index: event[indexPath.row])
         cell.cityLbl.text = event[indexPath.row].venue.city
@@ -62,7 +63,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if event[indexPath.row].id == 5337684 {
             cell.backgroundColor = .orange
         }
-        print("Log: \(event[indexPath.row].id)")
         return cell
     }
     

@@ -12,8 +12,11 @@ class SeatDetailViewController: UIViewController {
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let dateCons = DateConversation()
     
     var event: Event!
+    var img: UIImage?
+    
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var favoritBtn: UIButton!
     @IBOutlet weak var seatImgView: UIImageView!
@@ -23,9 +26,10 @@ class SeatDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLbl.text = event.type
-        seatImgView.downloaded(from: event.performers.first!.image)
+        seatImgView.image = self.img
         seatDateLbl.text = event.datetime_utc
         addressLbl.text = event.venue.address
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -35,8 +39,15 @@ class SeatDetailViewController: UIViewController {
     @IBAction func favoritBtnTapped(_ sender: UIButton) {
         let favoriteEvent = SeatEvent(entity: SeatEvent.entity(), insertInto: context)
         favoriteEvent.type = event.type
-//        favoriteEvent.date = Date
+        favoriteEvent.date = dateCons.getDate(from: event.datetime_utc)
         favoriteEvent.address = event.venue.address
+        appDelegate.saveContext()
+        let photoMgr = PhotoManager()
+        photoMgr.image = self.img!
+        photoMgr.save()
+        let imgurl = photoMgr.localmageURL
+        print("Log\(self.img!)")
+        Utilities.getDBFilePathWith(mark: "Log")
         
     }
 

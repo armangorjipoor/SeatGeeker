@@ -121,6 +121,9 @@
                                     <constraint firstAttribute="width" constant="30" id="mLH-QF-wDs"/>
                                 </constraints>
                                 <state key="normal" image="icn_FavEmpty"/>
+                                <connections>
+                                    <action selector="favoritBtnTapped:" destination="DDl-Gs-G46" eventType="touchUpInside" id="hdX-ww-0yP"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiH-aO-rFw" userLabel="SepratorView">
                                 <rect key="frame" x="10" y="98" width="300" height="1.5"/>
