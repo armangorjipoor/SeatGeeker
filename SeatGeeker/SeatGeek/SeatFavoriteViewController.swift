@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class SeatFavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -19,14 +19,16 @@ class SeatFavoriteViewController: UIViewController, UITableViewDataSource, UITab
     private var dateCons = DateConversation()
     private var favoriteModel: FavoriteModel!
     private var event: SeatEvent!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getEventsFromDatabase()
+        NotificationCenter.default.addObserver(self, selector: #selector(getEventsFromDatabase), name: NSNotification.Name(rawValue: "refresh"), object: nil)
     }
     
-    func getEventsFromDatabase () {
+    @objc  func getEventsFromDatabase() {
         let request = SeatEvent.fetchRequest() as NSFetchRequest<SeatEvent>
         let sort = NSSortDescriptor(key: #keyPath(SeatEvent.date), ascending: true)
         request.sortDescriptors = [sort]
@@ -41,14 +43,20 @@ class SeatFavoriteViewController: UIViewController, UITableViewDataSource, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailVC" {
             if let index = sender as? IndexPath {
-            let seatDetail = segue.destination as! SeatDetailViewController
-            let favoriteEvent = fetchedRc.object(at: index)
+                let seatDetail = segue.destination as! SeatDetailViewController
+                let favoriteEvent = fetchedRc.object(at: index)
                 seatDetail.isFavoriteAvailable = true
-                seatDetail.favoriteModel = FavoriteModel(eventImage: photoMgr.load(image: event.imgURL!)!, eventId: Int(event.id), eventDate: event.date!, eventAddress: event.address!, eventType: event.type!)
+                //                seatDetail.favoriteModel = FavoriteModel(eventImage: photoMgr.load(image: event.imgURL!)!, eventId: Int(event.id), eventDate: event.date!, eventAddress: event.address!, eventType: event.type!)
+                seatDetail.favoriteEvent = favoriteEvent
             }
         }
         
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedRc.fetchedObjects?.count ?? 0
     }
@@ -66,5 +74,8 @@ class SeatFavoriteViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "DetailVC", sender: indexPath)
     }
-
+    
+    @IBAction func dismissBtnTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

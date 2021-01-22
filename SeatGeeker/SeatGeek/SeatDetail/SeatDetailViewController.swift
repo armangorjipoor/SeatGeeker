@@ -14,13 +14,16 @@ class SeatDetailViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let dateCons = DateConversation()
     
+    let alertController = UIAlertController(title: "Remove Event", message: "Do you want remove your fav event ?", preferredStyle: .alert)
     // Below for when app is online
     var event: Event!
     var img: UIImage?
+    var photoMgr = PhotoManager()
     
     // when app is Offline
     var isFavoriteAvailable: Bool = false
     var favoriteModel: FavoriteModel!
+    var favoriteEvent: SeatEvent!
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var favoritBtn: UIButton!
@@ -40,13 +43,19 @@ class SeatDetailViewController: UIViewController {
     
     func configueWithDB() {
         favoritBtn.isSelected = true
-        titleLbl.text = favoriteModel.eventType
-        seatImgView.image = favoriteModel.eventImage
-        seatDateLbl.text = dateCons.getString(from: favoriteModel.eventDate)
-        addressLbl.text = favoriteModel.eventAddress
+//        titleLbl.text = favoriteModel.eventType
+//        seatImgView.image = favoriteModel.eventImage
+//        seatDateLbl.text = dateCons.getString(from: favoriteModel.eventDate)
+//        addressLbl.text = favoriteModel.eventAddress
+        titleLbl.text = favoriteEvent.type
+        seatImgView.image = photoMgr.load(image: favoriteEvent.imgURL!)
+        seatDateLbl.text = dateCons.getString(from: favoriteEvent.date!)
+        addressLbl.text = favoriteEvent.address
+        
     }
     
     func configueAsNormal() {
+         favoriteEvent = SeatEvent(entity: SeatEvent.entity(), insertInto: context)
         titleLbl.text = event.type
         seatImgView.image = self.img
         seatDateLbl.text = event.datetime_utc
@@ -57,11 +66,16 @@ class SeatDetailViewController: UIViewController {
     }
     
     @IBAction func favoritBtnTapped(_ sender: UIButton) {
-       
+        if sender.isSelected == false {
+            sender.isSelected = !sender.isSelected
+            save()
+        } else if sender.isSelected == true {
+            sender.isSelected = !sender.isSelected
+            unSave()
+        }
+    }
 
-    
-        
-        let favoriteEvent = SeatEvent(entity: SeatEvent.entity(), insertInto: context)
+    func save() {
         let photoMgr = PhotoManager()
         photoMgr.image = self.img!
         favoriteEvent.type = event.type
@@ -71,23 +85,33 @@ class SeatDetailViewController: UIViewController {
         appDelegate.saveContext()
 
         Utilities.getDBFilePathWith(mark: "Log")
-        
-        if sender.isSelected == false {
-            sender.isSelected = !sender.isSelected
-        } else if sender.isSelected == true {
-            sender.isSelected = !sender.isSelected
-        }
-        
-
+    }
+    
+    func unSave() {
+        alertController.addAction(UIAlertAction(title: "Yes, delete it", style: .destructive, handler: { _ in
+            self.context.delete(self.favoriteEvent)
+            self.appDelegate.saveContext()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refresh"), object: nil)
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ in
+            self.favoritBtn.isSelected = true
+            
+        }))
+        self.present(alertController, animated: true)
+         Utilities.getDBFilePathWith(mark: "Log")
         
     }
-
 }
 
-/*
- alertController.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: nil))
-    alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
- //self.present(alertController, animated: true)
 
- let alertController = UIAlertController(title: "Did you bring your towel?", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
+
+
+/*
+ 
+ 
+ 
+ 
+ 
+ 
  */

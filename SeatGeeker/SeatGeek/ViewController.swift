@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     private var eventViewModel: ViewModel!
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var offlineLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class ViewController: UIViewController {
         searchController.searchBar.delegate = self
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.tintColor = .white
-        searchController.searchBar.barTintColor = .black
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         eventViewModel = ViewModel()
         getEvents()
         
@@ -38,7 +39,6 @@ class ViewController: UIViewController {
     }
     
     func getEvents() {
-        
         eventViewModel.getData { welocom in
             self.event = welocom.events
             DispatchQueue.main.async {
@@ -51,6 +51,11 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if event.count == 0 {
+//            offlineLbl.isHidden = false
+//            self.tableView.isHidden = true
+//            self.view.backgroundColor = .gray
+//        }
         return event.count
     }
     
@@ -60,9 +65,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.cityLbl.text = event[indexPath.row].venue.city
         cell.dateLbl.text = event[indexPath.row].datetime_utc
         cell.seatImgView.downloaded(from: event[indexPath.row].performers.first!.image)
-        if event[indexPath.row].id == 5337684 {
-            cell.backgroundColor = .orange
-        }
         return cell
     }
     
