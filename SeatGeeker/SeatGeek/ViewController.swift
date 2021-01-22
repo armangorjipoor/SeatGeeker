@@ -14,10 +14,12 @@ class ViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var offlineLbl: UILabel!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchController.searchResultsUpdater = self
+        indicatorView.startAnimating()
+        //searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.tintColor = .white
@@ -43,6 +45,8 @@ class ViewController: UIViewController {
             self.event = welocom.events
             DispatchQueue.main.async {
                 self.event = welocom.events
+                self.indicatorView.stopAnimating()
+                self.indicatorView.isHidden = true
                 self.tableView.reloadData()
             }
         }
@@ -73,6 +77,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK: Search
+
 extension ViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.event.removeAll()
@@ -91,7 +97,16 @@ extension ViewController: UISearchResultsUpdating, UISearchBarDelegate {
         tableView.reloadData()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        eventViewModel.getData { welocom in
+            self.event = welocom.events
+            DispatchQueue.main.async {
+                self.event = welocom.events
+                self.indicatorView.stopAnimating()
+                self.indicatorView.isHidden = true
+                self.tableView.reloadData()
+            }
+        }
+
     }
     func updateSearchResults(for searchController: UISearchController) {
         
