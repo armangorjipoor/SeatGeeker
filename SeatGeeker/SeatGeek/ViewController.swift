@@ -19,11 +19,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         indicatorView.startAnimating()
-        //searchController.searchResultsUpdater = self
-//        searchController.searchBar.delegate = self
-       // tableView.tableHeaderView = searchController.searchBar
-//        searchController.searchBar.tintColor = .white
-//        searchController.searchBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         eventViewModel = ViewModel()
         getEvents()
         
@@ -55,12 +50,6 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if event.count == 0 {
-//            offlineLbl.isHidden = false
-//            indicatorView.isHidden = true
-//            self.tableView.isHidden = true
-//            self.view.backgroundColor = .gray
-//        }
         return event.count
     }
     

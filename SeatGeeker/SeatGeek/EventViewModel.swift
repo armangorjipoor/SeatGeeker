@@ -10,7 +10,6 @@ import Foundation
 
 class ViewModel: NSObject {
     
-    private var apiService: APIServices!
     var eventsItem = [Event]()
     var query: String! {
         didSet {
